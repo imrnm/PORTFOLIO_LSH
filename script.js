@@ -208,42 +208,69 @@ if (document.body.classList.contains('project-page')) {
     }
 }
 
-// Works Language Toggle
-const langToggleButtons = document.querySelectorAll('.lang-toggle-btn');
-const langKrElements = document.querySelectorAll('.work-description .lang-kr');
-const langEnElements = document.querySelectorAll('.work-description .lang-en');
-
-langToggleButtons.forEach(button => {
-    button.addEventListener('click', () => {
-        const selectedLang = button.getAttribute('data-lang');
+// Global Language Toggle
+(function() {
+    // Get saved language or default to 'kr'
+    let currentLang = localStorage.getItem('portfolioLang') || 'kr';
+    
+    // Initialize language on page load
+    function initLanguage() {
+        const body = document.body;
+        const langToggleButtons = document.querySelectorAll('.lang-toggle-btn');
+        const langKrElements = document.querySelectorAll('.lang-kr');
+        const langEnElements = document.querySelectorAll('.lang-en');
         
-        // Remove active class from all buttons
-        langToggleButtons.forEach(btn => btn.classList.remove('active'));
+        // Set body data attribute
+        body.setAttribute('data-lang', currentLang);
         
-        // Add active class to clicked button
-        button.classList.add('active');
+        // Update button states
+        langToggleButtons.forEach(btn => {
+            const btnLang = btn.getAttribute('data-lang');
+            if (btnLang === currentLang) {
+                btn.classList.add('active');
+            } else {
+                btn.classList.remove('active');
+            }
+        });
         
         // Toggle language visibility
-        if (selectedLang === 'kr') {
+        if (currentLang === 'kr') {
             langKrElements.forEach(el => {
-                el.style.display = 'inline';
+                el.style.display = '';
             });
             langEnElements.forEach(el => {
                 el.style.display = 'none';
             });
-        } else if (selectedLang === 'en') {
+        } else if (currentLang === 'en') {
             langKrElements.forEach(el => {
                 el.style.display = 'none';
             });
             langEnElements.forEach(el => {
-                el.style.display = 'inline';
+                el.style.display = '';
             });
         }
+    }
+    
+    // Initialize on page load
+    initLanguage();
+    
+    // Language toggle button handlers
+    const langToggleButtons = document.querySelectorAll('.lang-toggle-btn');
+    langToggleButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const selectedLang = button.getAttribute('data-lang');
+            
+            if (selectedLang !== currentLang) {
+                currentLang = selectedLang;
+                localStorage.setItem('portfolioLang', currentLang);
+                initLanguage();
+            }
+        });
     });
-});
+})();
 
-// Custom Cursor (Desktop only)
-if (window.matchMedia('(min-width: 769px) and (pointer: fine)').matches) {
+// Custom Cursor (Desktop only, main page only)
+if (window.matchMedia('(min-width: 769px) and (pointer: fine)').matches && !document.body.classList.contains('project-page')) {
     const cursor = document.querySelector('.custom-cursor');
     const cursorDot = document.querySelector('.cursor-dot');
     const cursorRing = document.querySelector('.cursor-ring');

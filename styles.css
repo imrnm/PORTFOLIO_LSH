@@ -35,6 +35,10 @@ body {
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+}
+
+/* Hide default cursor only on main page (not project pages) */
+body:not(.project-page) {
     cursor: none;
 }
 
@@ -53,15 +57,15 @@ body {
 }
 
 @media (min-width: 769px) and (pointer: fine) {
-    .custom-cursor {
+    body:not(.project-page) .custom-cursor {
         display: block;
     }
     
-    body {
+    body:not(.project-page) {
         cursor: none;
     }
     
-    * {
+    body:not(.project-page) * {
         cursor: none !important;
     }
 }
@@ -150,7 +154,14 @@ body {
 
 .nav-links {
     display: flex;
+    align-items: center;
     gap: 3rem;
+}
+
+.lang-toggle {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
 }
 
 .nav-link {
@@ -438,14 +449,7 @@ body {
     max-width: 600px;
 }
 
-/* Works Language Toggle */
-.works-lang-toggle {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    margin-left: auto;
-}
-
+/* Language Toggle */
 .lang-toggle-btn {
     background: none;
     border: none;
@@ -627,18 +631,6 @@ body {
         flex-wrap: wrap;
     }
     
-    .works-lang-toggle {
-        margin-left: 0;
-        margin-top: 0.5rem;
-    }
-    
-    #works .section-header {
-        flex-wrap: wrap;
-    }
-    
-    #works .section-title {
-        margin-right: auto;
-    }
     
     .about,
     .works,

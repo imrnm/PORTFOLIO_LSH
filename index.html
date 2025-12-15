@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
 </head>
-<body>
+<body data-lang="kr">
     <!-- Custom Cursor -->
     <div class="custom-cursor">
         <div class="cursor-dot"></div>
@@ -21,9 +21,23 @@
         <div class="nav-container">
             <div class="nav-logo">IM SEUNGHYUN</div>
             <div class="nav-links">
-                <a href="#about" class="nav-link">About</a>
-                <a href="#works" class="nav-link">Works</a>
-                <a href="#contact" class="nav-link">Contact</a>
+                <div class="lang-toggle">
+                    <button class="lang-toggle-btn active" data-lang="kr">KR</button>
+                    <span class="lang-divider">/</span>
+                    <button class="lang-toggle-btn" data-lang="en">EN</button>
+                </div>
+                <a href="#about" class="nav-link">
+                    <span class="lang-kr">About</span>
+                    <span class="lang-en" style="display: none;">About</span>
+                </a>
+                <a href="#works" class="nav-link">
+                    <span class="lang-kr">Works</span>
+                    <span class="lang-en" style="display: none;">Works</span>
+                </a>
+                <a href="#contact" class="nav-link">
+                    <span class="lang-kr">Contact</span>
+                    <span class="lang-en" style="display: none;">Contact</span>
+                </a>
             </div>
         </div>
     </nav>
@@ -36,7 +50,10 @@
                     <span class="line">Graphic</span>
                     <span class="line">Designer</span>
                 </h1>
-                <p class="hero-subtitle">Creating experiences through design</p>
+                <p class="hero-subtitle">
+                    <span class="lang-kr">디자인을 통한 경험 창조</span>
+                    <span class="lang-en" style="display: none;">Creating experiences through design</span>
+                </p>
             </div>
             <div class="scroll-indicator">
                 <div class="scroll-line"></div>
@@ -50,18 +67,24 @@
         <div class="container">
             <div class="section-header">
                 <span class="section-number">01</span>
-                <h2 class="section-title">About</h2>
+                <h2 class="section-title">
+                    <span class="lang-kr">About</span>
+                    <span class="lang-en" style="display: none;">About</span>
+                </h2>
             </div>
             <div class="about-content">
                 <div class="about-text">
                     <p class="about-intro">
-                        디자이너 임승현은 보편적인 일상에 질문을 던지고, 그 틈에서 발견한 이야기를 시각 언어로 풀어내는 것을 디자인의 핵심 가치로 삼습니다.
+                        <span class="lang-kr">디자이너 임승현은 보편적인 일상에 질문을 던지고, 그 틈에서 발견한 이야기를 시각 언어로 풀어내는 것을 디자인의 핵심 가치로 삼습니다.</span>
+                        <span class="lang-en" style="display: none;">Designer Im Seunghyun questions the ordinary and considers unraveling the stories discovered in those gaps through visual language as the core value of design.</span>
                     </p>
                     <p class="about-body">
-                        시각 디자이너로서 그래픽, 브랜딩, 에디토리얼 디자인에 집중하며, 프로젝트의 본질을 표현하기 위해 미니멀한 접근과 세밀한 타이포그래피를 고수합니다. 모든 작업은 명확한 컨셉과 일관된 시각 언어를 바탕으로 구성되며, 특히 공간과 텍스트의 리듬감을 중시하여 완성도를 높입니다.
+                        <span class="lang-kr">시각 디자이너로서 그래픽, 브랜딩, 에디토리얼 디자인에 집중하며, 프로젝트의 본질을 표현하기 위해 미니멀한 접근과 세밀한 타이포그래피를 고수합니다. 모든 작업은 명확한 컨셉과 일관된 시각 언어를 바탕으로 구성되며, 특히 공간과 텍스트의 리듬감을 중시하여 완성도를 높입니다.</span>
+                        <span class="lang-en" style="display: none;">As a visual designer, I focus on graphic, branding, and editorial design, adhering to a minimal approach and refined typography to express the essence of each project. All work is structured with clear concepts and consistent visual language, particularly emphasizing the rhythm between space and text to enhance quality.</span>
                     </p>
                     <p class="about-body">
-                        나아가 클라이언트와의 긴밀한 협업을 통해 브랜드의 고유한 스토리를 깊이 있게 해석하고, 그 결과물을 통해 소비자와 브랜드를 잇는 감성적이고도 명확한 연결을 만들어갑니다.
+                        <span class="lang-kr">나아가 클라이언트와의 긴밀한 협업을 통해 브랜드의 고유한 스토리를 깊이 있게 해석하고, 그 결과물을 통해 소비자와 브랜드를 잇는 감성적이고도 명확한 연결을 만들어갑니다.</span>
+                        <span class="lang-en" style="display: none;">Furthermore, through close collaboration with clients, I deeply interpret a brand's unique story and create emotional yet clear connections between consumers and brands through the resulting work.</span>
                     </p>
                 </div>
             </div>
@@ -73,12 +96,10 @@
         <div class="container">
             <div class="section-header">
                 <span class="section-number">02</span>
-                <h2 class="section-title">Selected Works</h2>
-                <div class="works-lang-toggle">
-                    <button class="lang-toggle-btn active" data-lang="kr">KR</button>
-                    <span class="lang-divider">/</span>
-                    <button class="lang-toggle-btn" data-lang="en">EN</button>
-                </div>
+                <h2 class="section-title">
+                    <span class="lang-kr">Selected Works</span>
+                    <span class="lang-en" style="display: none;">Selected Works</span>
+                </h2>
             </div>
             <div class="works-grid">
                 <div class="work-item">
@@ -161,11 +182,17 @@
         <div class="container">
             <div class="section-header">
                 <span class="section-number">03</span>
-                <h2 class="section-title">Contact</h2>
+                <h2 class="section-title">
+                    <span class="lang-kr">Contact</span>
+                    <span class="lang-en" style="display: none;">Contact</span>
+                </h2>
             </div>
             <div class="contact-content">
                 <div class="contact-text">
-                    <p class="contact-intro">프로젝트 문의 및 협업 제안을 환영합니다.</p>
+                    <p class="contact-intro">
+                        <span class="lang-kr">프로젝트 문의 및 협업 제안을 환영합니다.</span>
+                        <span class="lang-en" style="display: none;">Project inquiries and collaboration proposals are welcome.</span>
+                    </p>
                 </div>
                 <div class="contact-info">
                     <a href="mailto:imseunghyunim@gmail.com" class="contact-link">

@@ -9,15 +9,29 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
 </head>
-<body class="project-page">
+<body class="project-page" data-lang="kr">
     <!-- Navigation -->
     <nav class="nav">
         <div class="nav-container">
             <a href="index.html" class="nav-logo">IM</a>
             <div class="nav-links">
-                <a href="index.html#about" class="nav-link">About</a>
-                <a href="index.html#works" class="nav-link">Works</a>
-                <a href="index.html#contact" class="nav-link">Contact</a>
+                <div class="lang-toggle">
+                    <button class="lang-toggle-btn active" data-lang="kr">KR</button>
+                    <span class="lang-divider">/</span>
+                    <button class="lang-toggle-btn" data-lang="en">EN</button>
+                </div>
+                <a href="index.html#about" class="nav-link">
+                    <span class="lang-kr">About</span>
+                    <span class="lang-en" style="display: none;">About</span>
+                </a>
+                <a href="index.html#works" class="nav-link">
+                    <span class="lang-kr">Works</span>
+                    <span class="lang-en" style="display: none;">Works</span>
+                </a>
+                <a href="index.html#contact" class="nav-link">
+                    <span class="lang-kr">Contact</span>
+                    <span class="lang-en" style="display: none;">Contact</span>
+                </a>
             </div>
         </div>
     </nav>
