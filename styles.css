@@ -189,6 +189,22 @@ body {
     width: 100%;
 }
 
+/* Background Glow Effect */
+.bg-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0;
+    transition: opacity 0.8s ease;
+    background: radial-gradient(circle 500px at center, rgba(57, 255, 20, 0.06) 0%, transparent 70%);
+    filter: blur(80px);
+    transform: translate(-50%, -50%);
+}
+
 /* Hero Section */
 .hero {
     min-height: 100vh;
@@ -198,12 +214,14 @@ body {
     position: relative;
     background: linear-gradient(135deg, var(--color-black) 0%, var(--color-dark-gray) 100%);
     padding: 8rem 2rem 4rem;
+    overflow: hidden;
 }
 
 .hero-content {
     max-width: 1400px;
     width: 100%;
     position: relative;
+    z-index: 1;
 }
 
 .hero-text {
@@ -308,6 +326,13 @@ body {
 .about {
     padding: var(--spacing-xl) 0;
     background-color: var(--color-black);
+    position: relative;
+    overflow: hidden;
+}
+
+.about .container {
+    position: relative;
+    z-index: 1;
 }
 
 .about-content {
@@ -491,6 +516,13 @@ body {
 .contact {
     padding: var(--spacing-xl) 0;
     background-color: var(--color-black);
+    position: relative;
+    overflow: hidden;
+}
+
+.contact .container {
+    position: relative;
+    z-index: 1;
 }
 
 .contact-content {

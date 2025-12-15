@@ -357,3 +357,63 @@ if (window.matchMedia('(min-width: 769px) and (pointer: fine)').matches) {
     });
 }
 
+// Background Glow Effect (Hero, About, Contact sections only)
+(function() {
+    // Only apply on main page
+    if (document.body.classList.contains('project-page')) {
+        return;
+    }
+    
+    const glowSections = document.querySelectorAll('.hero, .about, .contact');
+    
+    glowSections.forEach(section => {
+        const bgGlow = section.querySelector('.bg-glow');
+        if (!bgGlow) return;
+        
+        let glowX = 50; // Percentage (centered)
+        let glowY = 50;
+        let targetX = 50;
+        let targetY = 50;
+        let isActive = false;
+        
+        // Smooth movement with requestAnimationFrame
+        function updateGlowPosition() {
+            const ease = 0.03; // Slower easing for subtlety
+            glowX += (targetX - glowX) * ease;
+            glowY += (targetY - glowY) * ease;
+            
+            // Transform from center position
+            const translateX = glowX - 50;
+            const translateY = glowY - 50;
+            bgGlow.style.transform = `translate(calc(-50% + ${translateX}%), calc(-50% + ${translateY}%))`;
+            
+            requestAnimationFrame(updateGlowPosition);
+        }
+        updateGlowPosition();
+        
+        // Mouse move handler
+        section.addEventListener('mousemove', (e) => {
+            const rect = section.getBoundingClientRect();
+            const x = ((e.clientX - rect.left) / rect.width) * 100;
+            const y = ((e.clientY - rect.top) / rect.height) * 100;
+            
+            targetX = x;
+            targetY = y;
+            
+            // Show glow on mouse move
+            if (!isActive) {
+                isActive = true;
+                bgGlow.style.opacity = '1';
+            }
+        });
+        
+        // Mouse leave handler - fade out and reset to center
+        section.addEventListener('mouseleave', () => {
+            isActive = false;
+            bgGlow.style.opacity = '0';
+            targetX = 50;
+            targetY = 50;
+        });
+    });
+})();
+
