@@ -37,12 +37,11 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
-/* Hide default cursor only on main page (not project pages) */
-body:not(.project-page) {
+/* Custom Cursor */
+body {
     cursor: none;
 }
 
-/* Custom Cursor */
 .custom-cursor {
     position: fixed;
     top: 0;
@@ -57,15 +56,11 @@ body:not(.project-page) {
 }
 
 @media (min-width: 769px) and (pointer: fine) {
-    body:not(.project-page) .custom-cursor {
+    .custom-cursor {
         display: block;
     }
     
-    body:not(.project-page) {
-        cursor: none;
-    }
-    
-    body:not(.project-page) * {
+    body * {
         cursor: none !important;
     }
 }

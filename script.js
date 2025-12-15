@@ -269,11 +269,12 @@ if (document.body.classList.contains('project-page')) {
     });
 })();
 
-// Custom Cursor (Desktop only, main page only)
-if (window.matchMedia('(min-width: 769px) and (pointer: fine)').matches && !document.body.classList.contains('project-page')) {
+// Custom Cursor (Desktop only)
+if (window.matchMedia('(min-width: 769px) and (pointer: fine)').matches) {
     const cursor = document.querySelector('.custom-cursor');
     const cursorDot = document.querySelector('.cursor-dot');
     const cursorRing = document.querySelector('.cursor-ring');
+    const isProjectPage = document.body.classList.contains('project-page');
     
     let mouseX = -100;
     let mouseY = -100;
@@ -281,8 +282,15 @@ if (window.matchMedia('(min-width: 769px) and (pointer: fine)').matches && !docu
     let ringY = -100;
     let isVisible = false;
     
-    // Interactive elements
-    const interactiveElements = document.querySelectorAll('a, button, .work-image, .work-link, .contact-link, .project-nav-link, .nav-link, .lang-toggle-btn');
+    // Interactive elements - different selection for main page vs project pages
+    let interactiveElements;
+    if (isProjectPage) {
+        // Project pages: links and buttons only (images excluded for subtle interaction)
+        interactiveElements = document.querySelectorAll('a, button, .contact-link, .project-nav-link, .nav-link, .lang-toggle-btn');
+    } else {
+        // Main page: includes work images and links
+        interactiveElements = document.querySelectorAll('a, button, .work-image, .work-link, .contact-link, .project-nav-link, .nav-link, .lang-toggle-btn');
+    }
     
     // Mouse move
     document.addEventListener('mousemove', (e) => {
