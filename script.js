@@ -242,3 +242,83 @@ langToggleButtons.forEach(button => {
     });
 });
 
+// Custom Cursor (Desktop only)
+if (window.matchMedia('(min-width: 769px) and (pointer: fine)').matches) {
+    const cursor = document.querySelector('.custom-cursor');
+    const cursorDot = document.querySelector('.cursor-dot');
+    const cursorRing = document.querySelector('.cursor-ring');
+    
+    let mouseX = -100;
+    let mouseY = -100;
+    let ringX = -100;
+    let ringY = -100;
+    let isVisible = false;
+    
+    // Interactive elements
+    const interactiveElements = document.querySelectorAll('a, button, .work-image, .work-link, .contact-link, .project-nav-link, .nav-link, .lang-toggle-btn');
+    
+    // Mouse move
+    document.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+        
+        // Show cursor on first move
+        if (!isVisible) {
+            isVisible = true;
+            cursor.style.opacity = '1';
+            ringX = mouseX;
+            ringY = mouseY;
+        }
+        
+        // Dot follows immediately
+        cursorDot.style.left = mouseX + 'px';
+        cursorDot.style.top = mouseY + 'px';
+    });
+    
+    // Smooth ring movement with requestAnimationFrame
+    function animateRing() {
+        const ease = 0.15;
+        ringX += (mouseX - ringX) * ease;
+        ringY += (mouseY - ringY) * ease;
+        
+        cursorRing.style.left = ringX + 'px';
+        cursorRing.style.top = ringY + 'px';
+        
+        requestAnimationFrame(animateRing);
+    }
+    animateRing();
+    
+    // Hover effects
+    interactiveElements.forEach(element => {
+        element.addEventListener('mouseenter', () => {
+            cursor.classList.add('hover');
+        });
+        
+        element.addEventListener('mouseleave', () => {
+            cursor.classList.remove('hover');
+        });
+    });
+    
+    // Click effect
+    document.addEventListener('mousedown', () => {
+        cursor.classList.add('click');
+    });
+    
+    document.addEventListener('mouseup', () => {
+        cursor.classList.remove('click');
+    });
+    
+    // Hide cursor when leaving window
+    document.addEventListener('mouseleave', () => {
+        if (isVisible) {
+            cursor.style.opacity = '0';
+        }
+    });
+    
+    document.addEventListener('mouseenter', () => {
+        if (isVisible) {
+            cursor.style.opacity = '1';
+        }
+    });
+}
+
