@@ -208,3 +208,37 @@ if (document.body.classList.contains('project-page')) {
     }
 }
 
+// Works Language Toggle
+const langToggleButtons = document.querySelectorAll('.lang-toggle-btn');
+const langKrElements = document.querySelectorAll('.work-description .lang-kr');
+const langEnElements = document.querySelectorAll('.work-description .lang-en');
+
+langToggleButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        const selectedLang = button.getAttribute('data-lang');
+        
+        // Remove active class from all buttons
+        langToggleButtons.forEach(btn => btn.classList.remove('active'));
+        
+        // Add active class to clicked button
+        button.classList.add('active');
+        
+        // Toggle language visibility
+        if (selectedLang === 'kr') {
+            langKrElements.forEach(el => {
+                el.style.display = 'inline';
+            });
+            langEnElements.forEach(el => {
+                el.style.display = 'none';
+            });
+        } else if (selectedLang === 'en') {
+            langKrElements.forEach(el => {
+                el.style.display = 'none';
+            });
+            langEnElements.forEach(el => {
+                el.style.display = 'inline';
+            });
+        }
+    });
+});
+

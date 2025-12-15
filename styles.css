@@ -198,6 +198,7 @@ body {
     gap: 2rem;
     margin-bottom: var(--spacing-md);
     padding-top: var(--spacing-lg);
+    position: relative;
 }
 
 .section-number {
@@ -355,6 +356,56 @@ body {
     max-width: 600px;
 }
 
+/* Works Language Toggle */
+.works-lang-toggle {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-left: auto;
+}
+
+.lang-toggle-btn {
+    background: none;
+    border: none;
+    color: var(--color-light-gray);
+    font-size: 0.875rem;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    padding: 0.25rem 0;
+    transition: var(--transition);
+    font-family: var(--font-family);
+    opacity: 0.5;
+    position: relative;
+}
+
+.lang-toggle-btn:hover {
+    opacity: 0.8;
+    color: var(--color-white);
+}
+
+.lang-toggle-btn.active {
+    color: var(--color-neon-green);
+    opacity: 1;
+}
+
+.lang-toggle-btn.active::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: var(--color-neon-green);
+}
+
+.lang-divider {
+    color: var(--color-light-gray);
+    opacity: 0.3;
+    font-size: 0.875rem;
+}
+
 /* Contact Section */
 .contact {
     padding: var(--spacing-xl) 0;
@@ -378,9 +429,12 @@ body {
 
 .contact-info {
     margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
 }
 
-.contact-email {
+.contact-link {
     display: inline-flex;
     align-items: center;
     gap: 2rem;
@@ -392,9 +446,10 @@ body {
     transition: var(--transition);
     padding: 1rem 0;
     position: relative;
+    width: fit-content;
 }
 
-.contact-email::before {
+.contact-link::before {
     content: '';
     position: absolute;
     bottom: 0;
@@ -405,20 +460,24 @@ body {
     transition: var(--transition);
 }
 
-.contact-email:hover {
+.contact-link:hover {
     color: var(--color-neon-green);
 }
 
-.contact-email:hover::before {
+.contact-link:hover::before {
     width: 100%;
 }
 
-.contact-email:hover .email-arrow {
+.contact-link:hover .contact-link-arrow {
     transform: translateX(10px);
     color: var(--color-neon-green);
 }
 
-.email-arrow {
+.contact-link-text {
+    display: inline-block;
+}
+
+.contact-link-arrow {
     font-size: 1.5rem;
     transition: var(--transition);
     display: inline-block;
@@ -479,9 +538,24 @@ body {
     }
     
     .section-header {
-        flex-direction: column;
-        gap: 0.5rem;
+        flex-direction: row;
+        align-items: center;
+        gap: 1rem;
         margin-bottom: var(--spacing-sm);
+        flex-wrap: wrap;
+    }
+    
+    .works-lang-toggle {
+        margin-left: 0;
+        margin-top: 0.5rem;
+    }
+    
+    #works .section-header {
+        flex-wrap: wrap;
+    }
+    
+    #works .section-title {
+        margin-right: auto;
     }
     
     .about,
@@ -494,7 +568,7 @@ body {
         gap: 4rem;
     }
     
-    .contact-email {
+    .contact-link {
         flex-direction: column;
         align-items: flex-start;
         gap: 1rem;
