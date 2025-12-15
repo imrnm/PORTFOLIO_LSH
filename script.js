@@ -1,12 +1,44 @@
-// 간단한 스크롤 애니메이션 효과
-document.addEventListener('DOMContentLoaded', function() {
-    // 카드에 페이드인 효과 추가
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
+// Smooth scroll for navigation links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            const offsetTop = target.offsetTop - 80;
+            window.scrollTo({
+                top: offsetTop,
+                behavior: 'smooth'
+            });
+        }
+    });
+});
 
-    const observer = new IntersectionObserver(function(entries) {
+// Intersection Observer for scroll animations
+const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+        }
+    });
+}, observerOptions);
+
+// Observe work items
+document.querySelectorAll('.work-item').forEach(item => {
+    observer.observe(item);
+});
+
+// Observe section headers
+document.querySelectorAll('.section-header').forEach(header => {
+    header.style.opacity = '0';
+    header.style.transform = 'translateY(30px)';
+    header.style.transition = 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
+    
+    const headerObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.style.opacity = '1';
@@ -14,14 +46,91 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }, observerOptions);
+    
+    headerObserver.observe(header);
+});
 
-    // 모든 작업물 카드에 관찰자 적용
-    const workCards = document.querySelectorAll('.work-card');
-    workCards.forEach(card => {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(20px)';
-        card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-        observer.observe(card);
+// Observe about and contact sections
+document.querySelectorAll('.about-text, .contact-content').forEach(section => {
+    section.style.opacity = '0';
+    section.style.transform = 'translateY(30px)';
+    section.style.transition = 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
+    
+    const sectionObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, observerOptions);
+    
+    sectionObserver.observe(section);
+});
+
+// Navbar scroll effect
+let lastScroll = 0;
+const nav = document.querySelector('.nav');
+
+window.addEventListener('scroll', () => {
+    const currentScroll = window.pageYOffset;
+    
+    if (currentScroll > 100) {
+        nav.style.backgroundColor = 'rgba(10, 10, 10, 0.95)';
+    } else {
+        nav.style.backgroundColor = 'rgba(10, 10, 10, 0.8)';
+    }
+    
+    lastScroll = currentScroll;
+});
+
+// Parallax effect for hero section
+window.addEventListener('scroll', () => {
+    const scrolled = window.pageYOffset;
+    const hero = document.querySelector('.hero');
+    if (hero && scrolled < window.innerHeight) {
+        hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+        hero.style.opacity = 1 - (scrolled / window.innerHeight) * 0.5;
+    }
+});
+
+// Work item stagger animation
+const workItems = document.querySelectorAll('.work-item');
+workItems.forEach((item, index) => {
+    item.style.transitionDelay = `${index * 0.1}s`;
+});
+
+// Mouse cursor effect for work items (optional enhancement)
+const workItemsAll = document.querySelectorAll('.work-item');
+workItemsAll.forEach(item => {
+    const workImage = item.querySelector('.work-image');
+    
+    workImage.addEventListener('mousemove', (e) => {
+        const rect = workImage.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        
+        const moveX = (x - centerX) / 10;
+        const moveY = (y - centerY) / 10;
+        
+        workImage.style.transform = `perspective(1000px) rotateY(${moveX}deg) rotateX(${-moveY}deg) scale(1.02)`;
     });
+    
+    workImage.addEventListener('mouseleave', () => {
+        workImage.style.transform = 'perspective(1000px) rotateY(0deg) rotateX(0deg) scale(1)';
+    });
+});
+
+// Smooth reveal on page load
+window.addEventListener('load', () => {
+    document.body.style.opacity = '0';
+    document.body.style.transition = 'opacity 0.5s ease-in';
+    
+    setTimeout(() => {
+        document.body.style.opacity = '1';
+    }, 100);
 });
 

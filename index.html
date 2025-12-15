@@ -3,52 +3,157 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>포트폴리오</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Designer Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- 헤더 -->
-    <header>
-        <h1>홍길동</h1>
-    </header>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <div class="nav-logo">D</div>
+            <div class="nav-links">
+                <a href="#about" class="nav-link">About</a>
+                <a href="#works" class="nav-link">Works</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </div>
+        </div>
+    </nav>
 
-    <!-- 메인 콘텐츠 -->
-    <main>
-        <!-- 소개 섹션 -->
-        <section class="intro">
-            <p class="intro-text">
-                안녕하세요. 열정적인 개발자 홍길동입니다.<br>
-                사용자 중심의 웹사이트와 애플리케이션을 만드는 것을 좋아합니다.
-            </p>
-        </section>
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="hero-title">
+                    <span class="line">Visual</span>
+                    <span class="line">Designer</span>
+                </h1>
+                <p class="hero-subtitle">Creating experiences through design</p>
+            </div>
+            <div class="scroll-indicator">
+                <div class="scroll-line"></div>
+                <span>Scroll</span>
+            </div>
+        </div>
+    </section>
 
-        <!-- 작업물 섹션 -->
-        <section class="works">
-            <h2>작업물</h2>
-            <div class="works-grid">
-                <div class="work-card">
-                    <h3>프로젝트 1</h3>
-                    <p>첫 번째 프로젝트에 대한 설명입니다. 사용자 경험을 개선하기 위한 웹 애플리케이션을 개발했습니다.</p>
-                </div>
-                <div class="work-card">
-                    <h3>프로젝트 2</h3>
-                    <p>두 번째 프로젝트에 대한 설명입니다. 모던한 디자인과 반응형 레이아웃을 적용했습니다.</p>
-                </div>
-                <div class="work-card">
-                    <h3>프로젝트 3</h3>
-                    <p>세 번째 프로젝트에 대한 설명입니다. 효율적인 코드와 최적화된 성능을 추구했습니다.</p>
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-number">01</span>
+                <h2 class="section-title">About</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <p class="about-intro">
+                        디자인은 단순한 시각적 요소를 넘어서, 브랜드의 정체성과 경험을 전달하는 매개체입니다.
+                    </p>
+                    <p class="about-body">
+                        시각 디자이너로서 그래픽, 브랜딩, 에디토리얼 디자인에 집중하며, 미니멀한 접근과 세밀한 타이포그래피를 통해 각 프로젝트의 본질을 표현합니다. 각 작업은 명확한 컨셉과 일관된 시각 언어를 바탕으로 구성되며, 공간과 텍스트의 리듬감을 중시합니다.
+                    </p>
+                    <p class="about-body">
+                        클라이언트와의 협업을 통해 브랜드의 고유한 스토리를 시각적으로 풀어내며, 소비자와 브랜드를 잇는 감성적 연결을 만들어갑니다.
+                    </p>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- 연락처 섹션 -->
-        <section class="contact">
-            <h2>연락처</h2>
-            <p>
-                <a href="mailto:your.email@example.com">your.email@example.com</a>
-            </p>
-        </section>
-    </main>
+    <!-- Works Section -->
+    <section class="works" id="works">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-number">02</span>
+                <h2 class="section-title">Selected Works</h2>
+            </div>
+            <div class="works-grid">
+                <div class="work-item">
+                    <div class="work-image">
+                        <div class="work-placeholder">
+                            <span>Project Image</span>
+                        </div>
+                    </div>
+                    <div class="work-info">
+                        <span class="work-category">Branding</span>
+                        <h3 class="work-title">Brand Identity Design</h3>
+                        <p class="work-description">컨셉트 브랜딩 및 시각 아이덴티티 시스템</p>
+                    </div>
+                </div>
+                
+                <div class="work-item">
+                    <div class="work-image">
+                        <div class="work-placeholder">
+                            <span>Project Image</span>
+                        </div>
+                    </div>
+                    <div class="work-info">
+                        <span class="work-category">Editorial</span>
+                        <h3 class="work-title">Editorial Design</h3>
+                        <p class="work-description">타이포그래피 중심의 레이아웃 디자인</p>
+                    </div>
+                </div>
+                
+                <div class="work-item">
+                    <div class="work-image">
+                        <div class="work-placeholder">
+                            <span>Project Image</span>
+                        </div>
+                    </div>
+                    <div class="work-info">
+                        <span class="work-category">Digital</span>
+                        <h3 class="work-title">Digital Experience</h3>
+                        <p class="work-description">웹 및 디지털 플랫폼 디자인</p>
+                    </div>
+                </div>
+                
+                <div class="work-item">
+                    <div class="work-image">
+                        <div class="work-placeholder">
+                            <span>Project Image</span>
+                        </div>
+                    </div>
+                    <div class="work-info">
+                        <span class="work-category">Packaging</span>
+                        <h3 class="work-title">Packaging Design</h3>
+                        <p class="work-description">프리미엄 패키징 디자인</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-number">03</span>
+                <h2 class="section-title">Contact</h2>
+            </div>
+            <div class="contact-content">
+                <div class="contact-text">
+                    <p class="contact-intro">프로젝트 문의 및 협업 제안을 환영합니다.</p>
+                </div>
+                <div class="contact-info">
+                    <a href="mailto:hello@designer.com" class="contact-email">
+                        <span class="email-text">hello@designer.com</span>
+                        <span class="email-arrow">→</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p class="footer-text">© 2024 Designer Portfolio. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
 
     <script src="script.js"></script>
 </body>
