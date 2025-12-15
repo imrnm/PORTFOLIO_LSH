@@ -1,0 +1,148 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #ffffff;
+    color: #000000;
+    line-height: 1.6;
+}
+
+/* 헤더 스타일 */
+header {
+    background-color: #ffffff;
+    padding: 2rem 0;
+    text-align: center;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: #000000;
+    letter-spacing: -0.02em;
+}
+
+/* 메인 콘텐츠 */
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+}
+
+/* 소개 섹션 */
+.intro {
+    text-align: center;
+    margin-bottom: 5rem;
+}
+
+.intro-text {
+    font-size: 1.25rem;
+    color: #333333;
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.8;
+}
+
+/* 작업물 섹션 */
+.works {
+    margin-bottom: 5rem;
+}
+
+.works h2 {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 3rem;
+    font-weight: 600;
+    color: #000000;
+}
+
+.works-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 0 1rem;
+}
+
+.work-card {
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 2rem;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.work-card:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+}
+
+.work-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #000000;
+    font-weight: 600;
+}
+
+.work-card p {
+    font-size: 1rem;
+    color: #333333;
+    line-height: 1.7;
+}
+
+/* 연락처 섹션 */
+.contact {
+    text-align: center;
+    padding: 3rem 0;
+    border-top: 1px solid #e0e0e0;
+}
+
+.contact h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+    color: #000000;
+}
+
+.contact p {
+    font-size: 1.125rem;
+}
+
+.contact a {
+    color: #000000;
+    text-decoration: none;
+    border-bottom: 1px solid #000000;
+    transition: opacity 0.3s ease;
+}
+
+.contact a:hover {
+    opacity: 0.7;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2rem;
+    }
+
+    main {
+        padding: 3rem 1.5rem;
+    }
+
+    .intro-text {
+        font-size: 1.125rem;
+    }
+
+    .works-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .work-card {
+        padding: 1.5rem;
+    }
+}
+
