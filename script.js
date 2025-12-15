@@ -101,27 +101,28 @@ workItems.forEach((item, index) => {
 });
 
 // Mouse cursor effect for work items (optional enhancement)
-const workItemsAll = document.querySelectorAll('.work-item');
-workItemsAll.forEach(item => {
-    const workImage = item.querySelector('.work-image');
-    
-    workImage.addEventListener('mousemove', (e) => {
-        const rect = workImage.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
+const workLinks = document.querySelectorAll('.work-link');
+workLinks.forEach(link => {
+    const workImage = link.querySelector('.work-image');
+    if (workImage) {
+        workImage.addEventListener('mousemove', (e) => {
+            const rect = workImage.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            
+            const moveX = (x - centerX) / 10;
+            const moveY = (y - centerY) / 10;
+            
+            workImage.style.transform = `perspective(1000px) rotateY(${moveX}deg) rotateX(${-moveY}deg) scale(1.02)`;
+        });
         
-        const centerX = rect.width / 2;
-        const centerY = rect.height / 2;
-        
-        const moveX = (x - centerX) / 10;
-        const moveY = (y - centerY) / 10;
-        
-        workImage.style.transform = `perspective(1000px) rotateY(${moveX}deg) rotateX(${-moveY}deg) scale(1.02)`;
-    });
-    
-    workImage.addEventListener('mouseleave', () => {
-        workImage.style.transform = 'perspective(1000px) rotateY(0deg) rotateX(0deg) scale(1)';
-    });
+        workImage.addEventListener('mouseleave', () => {
+            workImage.style.transform = 'perspective(1000px) rotateY(0deg) rotateX(0deg) scale(1)';
+        });
+    }
 });
 
 // Smooth reveal on page load
@@ -133,4 +134,77 @@ window.addEventListener('load', () => {
         document.body.style.opacity = '1';
     }, 100);
 });
+
+// Project page specific animations
+if (document.body.classList.contains('project-page')) {
+    // Project hero animation
+    const projectHero = document.querySelector('.project-hero-content');
+    if (projectHero) {
+        projectHero.style.opacity = '0';
+        projectHero.style.transform = 'translateY(30px)';
+        projectHero.style.transition = 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
+        
+        setTimeout(() => {
+            projectHero.style.opacity = '1';
+            projectHero.style.transform = 'translateY(0)';
+        }, 200);
+    }
+    
+    // Project description animation
+    const projectDesc = document.querySelector('.project-desc-content');
+    if (projectDesc) {
+        projectDesc.style.opacity = '0';
+        projectDesc.style.transform = 'translateY(30px)';
+        projectDesc.style.transition = 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
+        
+        const descObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        descObserver.observe(projectDesc);
+    }
+    
+    // Gallery items animation
+    const galleryItems = document.querySelectorAll('.gallery-item');
+    galleryItems.forEach((item, index) => {
+        item.style.opacity = '0';
+        item.style.transform = 'translateY(30px)';
+        item.style.transition = `all 0.8s cubic-bezier(0.4, 0, 0.2, 1) ${index * 0.1}s`;
+        
+        const galleryObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        galleryObserver.observe(item);
+    });
+    
+    // Project navigation animation
+    const projectNav = document.querySelector('.project-nav-content');
+    if (projectNav) {
+        projectNav.style.opacity = '0';
+        projectNav.style.transform = 'translateY(20px)';
+        projectNav.style.transition = 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
+        
+        const navObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        navObserver.observe(projectNav);
+    }
+}
 
